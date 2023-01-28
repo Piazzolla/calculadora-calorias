@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import clientPromise from '../../lib/mongodb';
-import { SeedIngredient } from '../../types/seedData';
+import { SeedIngredient } from '../../interfaces/seedData';
 import initialData from '../../data/initial-data'
 
 type Data = {

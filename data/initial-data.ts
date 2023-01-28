@@ -1,6 +1,6 @@
-import { SeedIngredient } from '../types/seedData';
+import { Ingredient } from '../interfaces/Ingredient';
 
-const initialData: SeedIngredient[] =
+const initialData: Ingredient[] =
 [
 
     {"baseQuantity":{"quantity":100, "unit": "gr"}, "name":"pechuga de pollo", "cals": 195.00	,"fat": 7.72	,"carbs": 0.00	,"protein": 29.55},

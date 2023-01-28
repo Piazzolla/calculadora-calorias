@@ -1,4 +1,4 @@
-export interface SeedIngredient {
+export interface Ingredient {
     name: string;
     baseQuantity: { unit: string, quantity: number} 
     cals: number;
