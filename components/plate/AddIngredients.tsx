@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Autocomplete } from "@mui/material"
 import TextField from "@mui/material/TextField"
 import Button from "@mui/material/Button";
@@ -7,6 +7,7 @@ import CheckIcon from '@mui/icons-material/Check';
 import { Ingredient } from "interfaces/Ingredient";
 import initialData from '../../data/initial-data';
 import { PlateContext } from '../../context/plate/PlateContext';
+import { SelectedIngredient } from '../../interfaces/SelectedIngredient';
 
 
 export const AddIngredients = () => {
@@ -21,10 +22,12 @@ export const AddIngredients = () => {
         event.preventDefault();
         if (!ingredientSelectedName) return;
         const ingObj = initialData.filter(i => i.name === ingredientSelectedName)[0];
-        if(plate.includes(ingObj)) return;
-        addIngredientToPlate(ingObj);
+//TODO: chequear no repetir nombre de ingrediente        if(plate.includes({ingObj})) return;
+        const selectedIngredient:SelectedIngredient = {ingredient: ingObj, qty: 0, unit: 'gr'}  //TODO: qty
+        addIngredientToPlate(selectedIngredient);
 
     }
+
 
 
     return (
@@ -62,14 +65,12 @@ export const AddIngredients = () => {
             <ul>
                 {
                     plate? 
-                    (plate.map(ingredient => { 
-                        return <li key={ingredient.name}>{ingredient.name} - {ingredient.baseQuantity.quantity} {ingredient.baseQuantity.unit}</li>
+                    (plate.map(selectedIngredient => { 
+                        return <li key={selectedIngredient.ingredient.name}>{selectedIngredient.ingredient.name} - {selectedIngredient.ingredient.baseQuantity.quantity} {selectedIngredient.ingredient.baseQuantity.unit}</li>
                     } ))
                     : null
                 }
             </ul>
-
-            <Button><AddIcon /></Button>
         </>
     )
 }

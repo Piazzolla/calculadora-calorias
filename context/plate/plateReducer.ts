@@ -1,21 +1,27 @@
+import { SelectedIngredient } from 'interfaces/SelectedIngredient';
 import { PlateState } from '.';
-import { Ingredient } from '../../interfaces/Ingredient';
 
 type PlateActionType =
-   | { type: '[Plate] - addIngredient', payload:Ingredient }
+   | { type: '[Plate] - addIngredient', payload: {selectedIngredient:SelectedIngredient, carbs: number, fats: number, prots: number, cals: number} }
 
 
 export const plateReducer = (state: PlateState, action: PlateActionType): PlateState => {
 
-   switch (action.type) {
-       case '[Plate] - addIngredient':
-          return {
-               ...state,
-               plate: [...state.plate, action.payload ]
-           }
 
-        default:
-           return state;
+
+
+   switch (action.type) {
+      case '[Plate] - addIngredient':
+         return {
+            ...state,
+            plate: [...state.plate, action.payload.selectedIngredient],
+            totalGrOfCarbs: action.payload.carbs,
+            totalGrOfFats: action.payload.fats,
+            totalGrOfProtein: action.payload.prots,
+            totalCalories: action.payload.cals
+         }
+      default:
+         return state;
    }
 
 }
