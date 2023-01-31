@@ -24,24 +24,32 @@ type Props = {
    children?: React.ReactNode
   };
 
+
+interface ISumarizable { 
+   name: "carbs" | "fat" | "protein" | "cals"
+   
+}   
+
 export const PlateProvider:FC<Props> = ({ children }) => {
    
    const addUpCallback = (a: number, b: number) => {
       return (a + b);
    }
 
+   const getTotalAttribute = (attribute: ISumarizable, selectedIngredient: SelectedIngredient) => {
+      return state.plate.length? 
+         state.plate.map(selectedIngredient => selectedIngredient.ingredient[attribute.name]).reduce(addUpCallback) + selectedIngredient.ingredient[attribute.name] : selectedIngredient.ingredient[attribute.name]
+   }
+
    const [state, dispatch] = useReducer(plateReducer, PLATE_INITIAL_STATE);
 
    const addIngredientToPlate = ( selectedIngredient: SelectedIngredient ) => {
   
-      const carbs = state.plate.length? 
-         state.plate.map(selectedIngredient => selectedIngredient.ingredient.carbs).reduce(addUpCallback) + selectedIngredient.ingredient.carbs : selectedIngredient.ingredient.carbs;  
-      const fats= state.plate.length? 
-         state.plate.map(selectedIngredient => selectedIngredient.ingredient.fat).reduce(addUpCallback) + selectedIngredient.ingredient.fat : selectedIngredient.ingredient.fat; 
-      const prots= state.plate.length? 
-         state.plate.map(selectedIngredient => selectedIngredient.ingredient.protein).reduce(addUpCallback) + selectedIngredient.ingredient.protein: selectedIngredient.ingredient.protein; 
-      const cals = state.plate.length? 
-         state.plate.map(selectedIngredient => selectedIngredient.ingredient.cals).reduce(addUpCallback) + selectedIngredient.ingredient.cals: selectedIngredient.ingredient.cals; 
+      const carbs = getTotalAttribute({name:'carbs'}, selectedIngredient);  
+      const fats = getTotalAttribute({name:'fat'}, selectedIngredient);  
+      const prots = getTotalAttribute({name:'protein'}, selectedIngredient);  
+      const cals = getTotalAttribute({name:'cals'}, selectedIngredient);  
+
       dispatch({type: '[Plate] - addIngredient', payload: {selectedIngredient, carbs, fats, prots, cals}});
    }
 
