@@ -2,29 +2,49 @@ import React, { useContext, useState } from 'react';
 import { Autocomplete } from "@mui/material"
 import TextField from "@mui/material/TextField"
 import Button from "@mui/material/Button";
-import AddIcon from '@mui/icons-material/Add';
 import CheckIcon from '@mui/icons-material/Check';
-import { Ingredient } from "interfaces/Ingredient";
 import initialData from '../../data/initial-data';
+import { useForm, SubmitHandler } from "react-hook-form";
 import { PlateContext } from '../../context/plate/PlateContext';
 import { SelectedIngredient } from '../../interfaces/SelectedIngredient';
 
 
+type FormIngredient = {
+    qty: number,
+    unit: string,
+    ingredientName: string
+  };
+
+
 export const AddIngredients = () => {
 
+    const { register, handleSubmit, watch, formState: { errors } } = useForm<FormIngredient>();
+    
     const ingNames = initialData.map(ingredient => ingredient.name);
-
+    
     const [ingredientSelectedName, setIngredientSelectedName] = useState<string | null>('');
-
+    
     const { plate, addIngredientToPlate } = useContext(PlateContext);
+    
 
-    const handleAddIngredientToPlate = (event: React.FormEvent<HTMLFormElement>) => {
-        event.preventDefault();
+ //   const onSubmit: SubmitHandler<Inputs> = data => console.log(data);
+
+
+
+    const handleAddIngredientToPlate = (formIngredient: FormIngredient) => {
+        console.log(JSON.stringify(formIngredient));
+     //   event.preventDefault();
         if (!ingredientSelectedName) return;
         const ingObj = initialData.filter(i => i.name === ingredientSelectedName)[0];
+
+        const selectedIngredient:SelectedIngredient = {
+            ingredient: ingObj,
+            qty: formIngredient.qty,
+            unit: "gr"//formIngredient.unit
+        }
 //TODO: chequear no repetir nombre de ingrediente        if(plate.includes({ingObj})) return;
-        const selectedIngredient:SelectedIngredient = {ingredient: ingObj, qty: 0, unit: 'gr'}  //TODO: qty
-        addIngredientToPlate(selectedIngredient);
+     //   const selectedIngredient:SelectedIngredient = {ingredient: ingObj, qty: 0, unit: 'gr'}  //TODO: qty
+    //    addIngredientToPlate(selectedIngredient);
 
     }
 
@@ -33,31 +53,32 @@ export const AddIngredients = () => {
     return (
         <>
             <div>AddIngredients</div>
-            <form onSubmit={handleAddIngredientToPlate}>
-                <div>
-                    <TextField id="qty-input" label="Cantidad" type={"number"} />
+            <form /*onSubmit={handleAddIngredientToPlate}>*/ onSubmit={handleSubmit(handleAddIngredientToPlate)}>
+                
+                    <TextField id="qty-input" label="Cantidad" {...register("qty")} type={"number"} />
                     <Autocomplete
                         disablePortal
                         id="units-select"
                         options={["gr"]}
                         defaultValue={"gr"}
-                        disabled
+                        value={"gr"}
+                      //  disabled
                         sx={{ width: 300 }}
-                        renderInput={(params) => <TextField {...params} label="units" />}
+                        renderInput={(params) => <TextField {...register("unit")} {...params} label="units" />}
                     />
                     <Autocomplete
                         disablePortal
                         id="ingredients-select"
                         options={ingNames}
                         sx={{ width: 300 }}
+                        
                         onChange={(event, value: (string | null)) => setIngredientSelectedName(value)}
-                        renderInput={(params) => <TextField {...params} label="Ingredientes" />
+                        renderInput={(params) => <TextField {...register("ingredientName")} {...params}  label="Ingredientes" />
                         }
                     />
                     <Button
                         type="submit"
                     ><CheckIcon /></Button>
-                </div>
             </form>
             <br />
 
@@ -66,7 +87,7 @@ export const AddIngredients = () => {
                 {
                     plate? 
                     (plate.map(selectedIngredient => { 
-                        return <li key={selectedIngredient.ingredient.name}>{selectedIngredient.ingredient.name} - {selectedIngredient.ingredient.baseQuantity.quantity} {selectedIngredient.ingredient.baseQuantity.unit}</li>
+                        return <li key={selectedIngredient.ingredient.name}>{selectedIngredient.ingredient.name} - {selectedIngredient.qty} {selectedIngredient.unit}</li>
                     } ))
                     : null
                 }
