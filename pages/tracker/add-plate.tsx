@@ -1,14 +1,14 @@
-import { AddIngredients } from "components/plate/AddIngredients";
-import { PlateSummary } from "components/plate/PlateSummary";
+import { AddIngredients } from "components/budget/AddIngredients";
+import { BudgetSummary } from "components/budget/BudgetSummary";
 import { PlateProvider } from "context/plate";
 import { NextPage } from "next"
+import { BudgetEditLayout } from '../../layouts/BudgetEditLayout';
 
 const AddPlatePage: NextPage = () => {
     return (
         <>
             <PlateProvider>
-                <AddIngredients />
-                <PlateSummary />
+                <BudgetEditLayout addIngredient={<AddIngredients />} summary={<BudgetSummary />}/>
             </PlateProvider>
         </>
     )

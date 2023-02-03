@@ -8,7 +8,7 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import FormLabel from '@mui/material/FormLabel';
 import FormGroup from '@mui/material/FormGroup';
 
-export const PlateSummary = () => {
+export const BudgetSummary = () => {
 
     const { plate, totalGrOfCarbs, totalGrOfFats, totalGrOfProtein, totalCalories } = useContext(PlateContext);
 
