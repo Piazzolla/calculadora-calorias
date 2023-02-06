@@ -1,7 +1,5 @@
-import Head from 'next/head'
 import clientPromise from '../lib/mongodb'
 import { InferGetServerSidePropsType } from 'next'
-import { BudgetProvider } from 'context/budget'
 
 export async function getServerSideProps() {
   try {
@@ -30,7 +28,11 @@ export default function Home({
   isConnected,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) {
   return (
-      <>
-      </>
+    <>
+
+        <h1>home page</h1>
+        <a href={`/tracker/add-budget`}>goto budget</a>
+
+    </>
   )
 }

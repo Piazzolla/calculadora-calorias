@@ -7,9 +7,8 @@ import { BudgetEditLayout } from '../../layouts/BudgetEditLayout';
 const AddBudget: NextPage = () => {
     return (
         <>
-            <BudgetProvider>
+
                 <BudgetEditLayout addIngredient={<AddIngredients />} summary={<BudgetSummary />}/>
-            </BudgetProvider>
         </>
     )
 }
