@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from 'react';
-import { PlateContext } from '../../context/plate/PlateContext';
+import { BudgetContext } from '../../context/budget/BudgetContext';
 import Button from '@mui/material/Button';
 import AddIcon from '@mui/icons-material/Add';
 import Switch from '@mui/material/Switch';
@@ -10,23 +10,10 @@ import FormGroup from '@mui/material/FormGroup';
 
 export const BudgetSummary = () => {
 
-    const { plate, totalGrOfCarbs, totalGrOfFats, totalGrOfProtein, totalCalories } = useContext(PlateContext);
+    const { budget, totalGrOfCarbs, totalGrOfFats, totalGrOfProtein, totalCalories } = useContext(BudgetContext);
 
     const [showCalories, setShowCalories] = useState(false);
-    // const addUpCallback = (a: number, b: number) => {
-    //     return (a + b);
-    // }
 
-    // const carbs = plate.map(ingredient => ingredient.carbs).reduce(addUpCallback) || 0;
-    // const fat = plate.map(ingredient => ingredient.fat).reduce(addUpCallback) || 0;
-    // const protein = plate.map(ingredient => ingredient.protein).reduce(addUpCallback) || 0;
-
-    // useEffect(() => {
-    //     if (!plate.length) return;
-    //     setCarbs(plate.map(ingredient => ingredient.carbs).reduce(addUpCallback));
-    //     setFats(plate.map(ingredient => ingredient.fat).reduce(addUpCallback));
-    //     setProtein(plate.map(ingredient => ingredient.protein).reduce(addUpCallback));
-    // }, [plate])
 
     const handleSwitchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setShowCalories(event.currentTarget.checked);
@@ -34,9 +21,9 @@ export const BudgetSummary = () => {
 
     return (
         <>
-            <div>PlateSummary:</div>
+            <div>Budget Summary:</div>
             <FormControl component="fieldset">
-                <FormLabel component="legend">Label placement</FormLabel>
+                <FormLabel component="legend">Show: </FormLabel>
                 <FormGroup aria-label="position" row>
                     <FormControlLabel
                         checked={showCalories}
@@ -47,12 +34,12 @@ export const BudgetSummary = () => {
                 </FormGroup>
             </FormControl>
             {
-                plate.length ?
+                budget.length ?
                     (<>
-                        <h1>Total Carbs: {totalGrOfCarbs * (showCalories ? 4 : 1)} { showCalories? "Calorias" : "Gramos"}</h1>
-                        <h1>Total Fat: {totalGrOfFats * (showCalories ? 9 : 1)} { showCalories? "Calorias" : "Gramos"}</h1>
-                        <h1>Total Protein: {totalGrOfProtein * (showCalories ? 4 : 1)} { showCalories? "Calorias" : "Gramos"}</h1>
-                        <h1>Total Calories: { totalCalories }</h1>
+                        <h2>Total Carbs: {totalGrOfCarbs * (showCalories ? 4 : 1)} { showCalories? "Calorias" : "Gramos"}</h2>
+                        <h2>Total Fat: {totalGrOfFats * (showCalories ? 9 : 1)} { showCalories? "Calorias" : "Gramos"}</h2>
+                        <h2>Total Protein: {totalGrOfProtein * (showCalories ? 4 : 1)} { showCalories? "Calorias" : "Gramos"}</h2>
+                        <h2>Total Calories: { totalCalories }</h2>
                     </>)
                     : null
 

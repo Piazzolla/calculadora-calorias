@@ -1,17 +1,16 @@
 import { createContext } from 'react';
-import { Ingredient } from '../../interfaces/Ingredient';
 import { SelectedIngredient } from '../../interfaces/SelectedIngredient';
 
 
 
 interface ContextProps {
-    plate: SelectedIngredient[];
+    budget: SelectedIngredient[];
     totalGrOfCarbs: number;
     totalGrOfFats: number;
     totalGrOfProtein: number;
     totalCalories: number;
 
-    addIngredientToPlate: (ing: SelectedIngredient) => void;
+    addIngredientToBudget: (ing: SelectedIngredient) => void;
 }
 
-export const PlateContext = createContext({} as ContextProps);
+export const BudgetContext = createContext({} as ContextProps);

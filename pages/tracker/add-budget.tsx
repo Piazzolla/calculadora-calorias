@@ -1,18 +1,18 @@
 import { AddIngredients } from "components/budget/AddIngredients";
 import { BudgetSummary } from "components/budget/BudgetSummary";
-import { PlateProvider } from "context/plate";
+import { BudgetProvider } from "context/budget";
 import { NextPage } from "next"
 import { BudgetEditLayout } from '../../layouts/BudgetEditLayout';
 
-const AddPlatePage: NextPage = () => {
+const AddBudget: NextPage = () => {
     return (
         <>
-            <PlateProvider>
+            <BudgetProvider>
                 <BudgetEditLayout addIngredient={<AddIngredients />} summary={<BudgetSummary />}/>
-            </PlateProvider>
+            </BudgetProvider>
         </>
     )
 }
 
-export default AddPlatePage;
+export default AddBudget;
 

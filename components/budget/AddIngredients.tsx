@@ -5,7 +5,7 @@ import Button from "@mui/material/Button";
 import CheckIcon from '@mui/icons-material/Check';
 import initialData from '../../data/initial-data';
 import { useForm, SubmitHandler } from "react-hook-form";
-import { PlateContext } from '../../context/plate/PlateContext';
+import { BudgetContext } from '../../context/budget/BudgetContext';
 import { SelectedIngredient } from '../../interfaces/SelectedIngredient';
 
 
@@ -24,14 +24,14 @@ export const AddIngredients = () => {
     
     const [ingredientSelectedName, setIngredientSelectedName] = useState<string | null>('');
     
-    const { plate, addIngredientToPlate } = useContext(PlateContext);
+    const { budget, addIngredientToBudget } = useContext(BudgetContext);
     
 
  //   const onSubmit: SubmitHandler<Inputs> = data => console.log(data);
 
 
 
-    const handleAddIngredientToPlate = (formIngredient: FormIngredient) => {
+    const handleAddIngredientToBudget = (formIngredient: FormIngredient) => {
         console.log(JSON.stringify(formIngredient));
      //   event.preventDefault();
         if (!ingredientSelectedName) return;
@@ -44,7 +44,7 @@ export const AddIngredients = () => {
         }
 //TODO: chequear no repetir nombre de ingrediente        if(plate.includes({ingObj})) return;
      //   const selectedIngredient:SelectedIngredient = {ingredient: ingObj, qty: 0, unit: 'gr'}  //TODO: qty
-    //    addIngredientToPlate(selectedIngredient);
+     addIngredientToBudget(selectedIngredient);
 
     }
 
@@ -53,7 +53,7 @@ export const AddIngredients = () => {
     return (
         <>
             <div>AddIngredients</div>
-            <form /*onSubmit={handleAddIngredientToPlate}>*/ onSubmit={handleSubmit(handleAddIngredientToPlate)}>
+            <form /*onSubmit={handleAddIngredientToPlate}>*/ onSubmit={handleSubmit(handleAddIngredientToBudget)}>
                 
                     <TextField id="qty-input" label="Cantidad" {...register("qty")} type={"number"} />
                     <Autocomplete
@@ -85,8 +85,8 @@ export const AddIngredients = () => {
             {/* lista de ingredientes agregados */}
             <ul>
                 {
-                    plate? 
-                    (plate.map(selectedIngredient => { 
+                    budget? 
+                    (budget.map(selectedIngredient => { 
                         return <li key={selectedIngredient.ingredient.name}>{selectedIngredient.ingredient.name} - {selectedIngredient.qty} {selectedIngredient.unit}</li>
                     } ))
                     : null

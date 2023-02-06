@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import clientPromise from '../lib/mongodb'
 import { InferGetServerSidePropsType } from 'next'
-import { PlateProvider } from 'context/plate'
+import { BudgetProvider } from 'context/budget'
 
 export async function getServerSideProps() {
   try {
