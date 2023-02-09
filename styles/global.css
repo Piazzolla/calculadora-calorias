@@ -1,4 +1,6 @@
 /*
+
+
 --- 01 TYPOGRAPHY SYSTEM
 
 - Font sizes (px)
@@ -20,12 +22,18 @@ Paragraph default:
 
 
 --- 02 COLORS
-primary: #f09402
-secondary: #db5a42
-gray: #272727
+primary: #f29f1b
+tints :
+shades: #fceacc;
 
-tints 
-shades
+tints :
+shades:
+secondary: #db5a42
+
+gray: #272727
+tints :
+shades:
+
 
 
 
@@ -52,5 +60,65 @@ Medium:
 
 
   body {
-    font-family: sans-serif;
+    font-family: 'Roboto', sans-serif;
+    line-height: 1;
+    font-weight: 400;
+    color: #272727;
   }
+
+  html {
+    /* font-size: 10px; */
+    /* 10px / 16px = 0.625 = 62.5% */
+    /* Percentage of user's browser font-size setting */
+    font-size: 62.5%;
+    background-color: #f29f1b;
+}
+
+  .add-ingredient-view {
+    margin-top: 1.5em;
+    padding: 2em;
+    border-radius: 9px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    column-gap: 1.2rem;
+    
+}
+
+.add-ingredient-title {
+    margin-bottom: 1em;
+    text-transform: uppercase;
+    align-self: center;
+}
+
+.add-ingredient-form-field {
+    background-color: #fceacc;
+    padding: .8rem, 0;
+    margin-bottom: 1.5rem;
+}
+.add-ingredient-form-field label, 
+.add-ingredient-form-field input {
+    font-size: 1.8rem;
+}
+h3 {
+    font-weight: 700;
+    line-height: 1.2;
+    font-size: 1.8rem;
+    letter-spacing: 0.3px;
+}
+
+.add-ingredient-submit-button {
+    height: 6rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* padding: 1rem; */
+    background-color: #db5a42;
+    color: white;
+    border-radius: 50%;
+}
+
+.add-ingredient-check-icon {
+    width: 3.2rem;
+    height: 3.2rem;
+}

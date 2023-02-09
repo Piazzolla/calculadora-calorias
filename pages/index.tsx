@@ -30,6 +30,7 @@ export default function Home({
   return (
     <>
 
+
         <h1>home page</h1>
         <a href={`/tracker/add-budget`}>goto budget</a>
 

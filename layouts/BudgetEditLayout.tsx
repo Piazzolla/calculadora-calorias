@@ -10,7 +10,9 @@ interface Props {
 
 export const BudgetEditLayout = ({ addIngredient, summary }:Props) => {
     return (
-        <Box sx={{
+        <Box 
+            className='budget-edit-layout'
+            sx={{
             display: 'flex', 
             flexDirection:'column',
             alignItems: 'center',
