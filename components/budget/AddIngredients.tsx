@@ -56,7 +56,7 @@ export const AddIngredients = () => {
                 <h3 className='add-ingredient-title'>Add Ingredients To Budget</h3>
                 <form /*onSubmit={handleAddIngredientToPlate}>*/ onSubmit={handleSubmit(handleAddIngredientToBudget)}>
 
-                    <TextField id="qty-input" label="Quantity" {...register("qty")} type={"number"} className='add-ingredient-form-field'/>
+                    <TextField id="qty-input" label="Quantity" {...register("qty")} type={"number"} className='add-ingredient-form-field' />
                     <Autocomplete
                         disablePortal
                         id="units-select"
@@ -65,7 +65,7 @@ export const AddIngredients = () => {
                         value={"gr"}
                         //  disabled
                         sx={{ width: 300 }}
-                        renderInput={(params) => <TextField {...register("unit")} {...params} label="units" className='add-ingredient-form-field'/>}
+                        renderInput={(params) => <TextField {...register("unit")} {...params} label="units" className='add-ingredient-form-field' />}
                     />
                     <Autocomplete
                         disablePortal
@@ -74,22 +74,26 @@ export const AddIngredients = () => {
                         sx={{ width: 300 }}
 
                         onChange={(event, value: (string | null)) => setIngredientSelectedName(value)}
-                        renderInput={(params) => <TextField {...register("ingredientName")} {...params} label="Ingredients" className='add-ingredient-form-field'/>
+                        renderInput={(params) => <TextField {...register("ingredientName")} {...params} label="Ingredients" className='add-ingredient-form-field' />
                         }
                     />
-                    <Button
-                        className='add-ingredient-submit-button'
-                        type="submit"
-                    ><CheckIcon className='add-ingredient-check-icon' /></Button>
+                    <Box className='add-ingredient-submit-box'>
+                        <Button
+                            className='add-ingredient-submit-button'
+                            type="submit"
+                        ><CheckIcon className='add-ingredient-check-icon' /></Button>
+                    </Box>
                 </form>
-                <br />
+                {/* <br /> */}
+            </Box>
 
+            <Box className='added-ingredient-list-box'>
                 {/* lista de ingredientes agregados */}
                 <ul>
                     {
                         budget ?
                             (budget.map(selectedIngredient => {
-                                return <li key={selectedIngredient.ingredient.name}>{selectedIngredient.ingredient.name} - {selectedIngredient.qty} {selectedIngredient.unit}</li>
+                                return <li className='added-ingredient-list-item' key={selectedIngredient.ingredient.name}>{selectedIngredient.ingredient.name}: {selectedIngredient.qty} {selectedIngredient.unit}</li>
                             }))
                             : null
                     }

@@ -75,18 +75,20 @@ Medium:
 }
 
   .add-ingredient-view {
-    margin-top: 1.5em;
+    margin-top: 1.6em;
     padding: 2em;
-    border-radius: 9px;
+    border-top-right-radius: 9px;
+    border-top-left-radius: 9px;
     background-color: white;
     display: flex;
     flex-direction: column;
     column-gap: 1.2rem;
-    
 }
 
+
+
 .add-ingredient-title {
-    margin-bottom: 1em;
+    margin-bottom: 1.2em;
     text-transform: uppercase;
     align-self: center;
 }
@@ -94,7 +96,7 @@ Medium:
 .add-ingredient-form-field {
     background-color: #fceacc;
     padding: .8rem, 0;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.6rem;
 }
 .add-ingredient-form-field label, 
 .add-ingredient-form-field input {
@@ -108,17 +110,46 @@ h3 {
 }
 
 .add-ingredient-submit-button {
-    height: 6rem;
+    margin-top: 0.8em;
+    height: 4rem;
+    width: 4rem;
     display: flex;
     justify-content: center;
     align-items: center;
     /* padding: 1rem; */
     background-color: #db5a42;
+
     color: white;
-    border-radius: 50%;
+    border-radius: 9px;
+}
+
+.add-ingredient-submit-button:hover 
+{
+    /* background-color: black; */
+    background-color: #c5513b;
 }
 
 .add-ingredient-check-icon {
     width: 3.2rem;
     height: 3.2rem;
+}
+
+.add-ingredient-submit-box {
+    display: flex;
+    justify-content: flex-end;
+}
+
+
+.added-ingredient-list-box ul {
+    list-style: none;
+    font-size: 2em;
+    background-color: #fceacc;
+    padding: .8rem, 0;
+    padding: 1.2em 2em;
+    border-bottom-right-radius: 9px;
+    border-bottom-left-radius: 9px;
+    line-height: 1.4;
+}
+.added-ingredient-list-item{
+    text-transform: capitalize;
 }
