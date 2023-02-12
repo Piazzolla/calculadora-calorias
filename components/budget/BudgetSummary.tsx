@@ -7,6 +7,7 @@ import FormControl from '@mui/material/FormControl';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormLabel from '@mui/material/FormLabel';
 import FormGroup from '@mui/material/FormGroup';
+import { Box } from '@mui/material';
 
 export const BudgetSummary = () => {
 
@@ -17,34 +18,37 @@ export const BudgetSummary = () => {
 
     const handleSwitchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setShowCalories(event.currentTarget.checked);
-      };
+    };
 
     return (
         <>
-            <div>Budget Summary:</div>
-            <FormControl component="fieldset">
-                <FormLabel component="legend">Show: </FormLabel>
-                <FormGroup aria-label="position" row>
-                    <FormControlLabel
-                        checked={showCalories}
-                        control={<Switch onChange={ (e) => handleSwitchChange(e) } color="primary" />}
-                        label={ showCalories? "Calorias" : "Gramos"}
-                        labelPlacement="bottom"
-                    />
-                </FormGroup>
-            </FormControl>
-            {
-                budget.length ?
-                    (<>
-                        <h2>Total Carbs: {totalGrOfCarbs * (showCalories ? 4 : 1)} { showCalories? "Calorias" : "Gramos"}</h2>
-                        <h2>Total Fat: {totalGrOfFats * (showCalories ? 9 : 1)} { showCalories? "Calorias" : "Gramos"}</h2>
-                        <h2>Total Protein: {totalGrOfProtein * (showCalories ? 4 : 1)} { showCalories? "Calorias" : "Gramos"}</h2>
-                        <h2>Total Calories: { totalCalories }</h2>
-                    </>)
-                    : null
+            <Box className='summary-container'>
+                <h3>Budget Summary:</h3>
+                <FormControl component="fieldset">
+                    <FormLabel component="legend">Show: </FormLabel>
+                    <FormGroup aria-label="position" row>
+                        <FormControlLabel
+                            checked={showCalories}
+                            control={<Switch onChange={(e) => handleSwitchChange(e)} color="primary" />}
+                            label={showCalories ? "Calorias" : "Gramos"}
+                            labelPlacement="bottom"
+                        />
+                    </FormGroup>
+                </FormControl>
+                {
+                    budget.length ?
+                        (<>
 
-            }
-            <Button><AddIcon /></Button>
+                            <h2>Total Carbs: {totalGrOfCarbs * (showCalories ? 4 : 1)} {showCalories ? "Calorias" : "Gramos"}</h2>
+                            <h2>Total Fat: {totalGrOfFats * (showCalories ? 9 : 1)} {showCalories ? "Calorias" : "Gramos"}</h2>
+                            <h2>Total Protein: {totalGrOfProtein * (showCalories ? 4 : 1)} {showCalories ? "Calorias" : "Gramos"}</h2>
+                            <h2>Total Calories: {totalCalories}</h2>
+                        </>)
+                        : null
+
+                }
+                <Button><AddIcon /></Button>
+            </Box>
         </>
     )
 }

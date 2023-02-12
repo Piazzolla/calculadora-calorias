@@ -1,4 +1,5 @@
 import '../styles/global.css';
+import '../styles/add-ingredient.css';
 import type { AppProps } from 'next/app';
 import { BudgetProvider } from 'context/budget';
 
