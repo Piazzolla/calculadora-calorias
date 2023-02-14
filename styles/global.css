@@ -80,6 +80,13 @@ Medium:
 }
 
 
+#__next {
+    display: flex;
+    justify-self: stretch;
+    align-self: stretch;
+    width: 100%;
+    justify-content: center;
+}
 
 .summary-container {
     margin-top: 1.6em;
@@ -92,10 +99,39 @@ Medium:
     column-gap: 1.2rem;
 }
 
-#__next {
-    display: flex;
-    justify-self: stretch;
-    align-self: stretch;
-    width: 100%;
-    justify-content: center;
+
+.budget-summary-title {
+    margin-bottom: 1.2em;
+    text-transform: uppercase;
+    align-self: center;
 }
+
+.cal-gram-selector {
+    background-color: green;
+    margin-bottom: 2rem;
+}
+
+.summary-data-view {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.summary-list {
+    list-style: none;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.summary-list-item {
+    font-size: 1.6rem;
+}
+
+.summary-chart {
+    align-self: center;
+}
+
+.macros-chart {
+    background-color: white;
+}
+

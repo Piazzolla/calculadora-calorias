@@ -8,6 +8,9 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import FormLabel from '@mui/material/FormLabel';
 import FormGroup from '@mui/material/FormGroup';
 import { Box } from '@mui/material';
+import Typography from '@mui/material/Typography';
+import MacrosChart from './MacrosChart';
+
 
 export const BudgetSummary = () => {
 
@@ -23,8 +26,8 @@ export const BudgetSummary = () => {
     return (
         <>
             <Box className='summary-container'>
-                <h3>Budget Summary:</h3>
-                <FormControl component="fieldset">
+                <h3 className='budget-summary-title'>Budget Summary</h3>
+                <FormControl className='cal-gram-selector' component="fieldset">
                     <FormLabel component="legend">Show: </FormLabel>
                     <FormGroup aria-label="position" row>
                         <FormControlLabel
@@ -37,13 +40,28 @@ export const BudgetSummary = () => {
                 </FormControl>
                 {
                     budget.length ?
-                        (<>
+                        (<div className='summary-data-view'>
+                            <ul className='summary-list'>
 
-                            <h2>Total Carbs: {totalGrOfCarbs * (showCalories ? 4 : 1)} {showCalories ? "Calorias" : "Gramos"}</h2>
-                            <h2>Total Fat: {totalGrOfFats * (showCalories ? 9 : 1)} {showCalories ? "Calorias" : "Gramos"}</h2>
-                            <h2>Total Protein: {totalGrOfProtein * (showCalories ? 4 : 1)} {showCalories ? "Calorias" : "Gramos"}</h2>
-                            <h2>Total Calories: {totalCalories}</h2>
-                        </>)
+                                <li className='summary-list-item'>
+                                    <Typography sx={{ fontSize:'1.6rem', textTransform: 'uppercase' }}>Total Carbs:</Typography>
+                                    <Typography sx={{ fontSize:'1.6rem', marginBottom:'1rem'}}> {totalGrOfCarbs * (showCalories ? 4 : 1)} {showCalories ? "Cals" : "Grams"}</Typography>
+                                </li>
+                                <li className='summary-list-item'>
+                                    <Typography sx={{ fontSize:'1.6rem', textTransform: 'uppercase' }}>Total Fat:</Typography>
+                                    <Typography sx={{ fontSize:'1.6rem', marginBottom:'1rem'}}> {totalGrOfFats * (showCalories ? 9 : 1)} {showCalories ? "Cals" : "Grams"}</Typography>
+                                </li>
+                                <li className='summary-list-item'>
+                                    <Typography sx={{ fontSize:'1.6rem', textTransform: 'uppercase' }}>Total Protein:</Typography>
+                                    <Typography sx={{ fontSize:'1.6rem', marginBottom:'1rem'}}> {totalGrOfProtein * (showCalories ? 4 : 1)} {showCalories ? "Cals" : "Grams"}</Typography>
+                                </li>
+                                <li className='summary-list-item'>
+                                    <Typography sx={{ fontSize:'1.6rem', textTransform: 'uppercase' }}>Total Calories:</Typography>
+                                    <Typography sx={{ fontSize:'1.6rem', marginBottom:'1rem'}}> {totalCalories}</Typography>
+                                </li>
+                            </ul>
+                            <MacrosChart />
+                        </div>)
                         : null
 
                 }
