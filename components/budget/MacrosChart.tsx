@@ -1,38 +1,61 @@
 import {
-    Chart as ChartJS,
-    RadialLinearScale,
-    PointElement,
-    LineElement,
-    Filler,
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  Title,
     Tooltip,
     Legend
   } from "chart.js";
-  import { Radar } from "react-chartjs-2";
+  import { Bar } from "react-chartjs-2";
   
   ChartJS.register(
-    RadialLinearScale,
-    PointElement,
-    LineElement,
-    Filler,
+    CategoryScale,
+    LinearScale,
+    BarElement,
+    Title,
     Tooltip,
     Legend
   );
   
-  export const data = {
-    labels: ["Thing 1", "Thing 2", "Thing 3"],
-    datasets: [
-      {
-        label: "# of Votes",
-        data: [2, 9, 3],
-        backgroundColor: "rgba(255, 99, 132, 0.2)",
-        borderColor: "rgba(255, 99, 132, 1)",
-        borderWidth: 1
-      }
-    ]
+  export const options = {
+    responsive: true,
+    plugins: {
+      legend: {
+        position: 'top' as const,
+      },
+      title: {
+        display: true,
+        text: 'Chart.js Bar Chart',
+      },
+    },
   };
-  
-  const MacrosChart = () => {
-    return <Radar className="macros-chart" data={data} />;
+
+  const labels =  ['fat', 'carbs', 'protein'];
+
+  interface ChartProps {
+    foodData: {
+      fat: number;
+      carbs: number;
+      protein: number
+    }
+  }
+
+  const MacrosChart:React.FunctionComponent<ChartProps> = ( {foodData} ) => {
+    console.log(foodData.fat, foodData.carbs, foodData.protein)
+    const data = {
+      labels,
+      datasets: [
+        {
+          label: "# of grams",
+          data: [ foodData.fat, foodData.carbs, foodData.protein],
+          backgroundColor: "rgba(255, 99, 132, 0.2)",
+        }
+      ]
+    };
+
+
+    return <Bar className="macros-chart" options={options} data={data} />;
   }
 
   export default MacrosChart;

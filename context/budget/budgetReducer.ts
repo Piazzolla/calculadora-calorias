@@ -15,10 +15,10 @@ export const budgetReducer = (state: BudgetState, action: BudgetActionType): Bud
          return {
             ...state,
             budget: [...state.budget, action.payload.selectedIngredient],
-            totalGrOfCarbs: action.payload.carbs,
-            totalGrOfFats: action.payload.fats,
-            totalGrOfProtein: action.payload.prots,
-            totalCalories: action.payload.cals
+            totalGrOfCarbs:Math.round(action.payload.carbs * 100) / 100,
+            totalGrOfFats: Math.round(action.payload.fats * 100) / 100,
+            totalGrOfProtein: Math.round(action.payload.prots * 100) / 100,
+            totalCalories: Math.round(action.payload.cals * 100) / 100
          }
       default:
          return state;

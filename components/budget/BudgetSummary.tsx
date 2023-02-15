@@ -60,7 +60,7 @@ export const BudgetSummary = () => {
                                     <Typography sx={{ fontSize:'1.6rem', marginBottom:'1rem'}}> {totalCalories}</Typography>
                                 </li>
                             </ul>
-                            <MacrosChart />
+                            <MacrosChart  foodData={{ fat:totalGrOfFats, carbs:totalGrOfCarbs, protein:totalGrOfProtein}}/>
                         </div>)
                         : null
 
