@@ -10,7 +10,22 @@ import FormGroup from '@mui/material/FormGroup';
 import { Box } from '@mui/material';
 import Typography from '@mui/material/Typography';
 import MacrosChart from './MacrosChart';
+import { alpha, styled } from '@mui/material/styles';
+import { grey } from '@mui/material/colors';
+import { WhiteSwitch } from './WhiteSwitch';
 
+// const WhiteSwitch = styled(Switch)(({ theme }) => ({
+//     '& .MuiSwitch-switchBase.Mui-checked': {
+//       color: grey[50],
+//       '&:hover': {
+//         backgroundColor: alpha(grey[50], theme.palette.action.hoverOpacity),
+//       },
+//     },
+//     '& .MuiSwitch-switchBase.Mui-checked + .MuiSwitch-track': {
+//       backgroundColor: grey[50],
+//     },
+//   }));
+  const label = { inputProps: { 'aria-label': 'White cals grams switch' } };
 
 export const BudgetSummary = () => {
 
@@ -28,14 +43,15 @@ export const BudgetSummary = () => {
             <Box className='summary-container'>
                 <h3 className='budget-summary-title'>Budget Summary</h3>
                 <FormControl className='cal-gram-selector' component="fieldset">
-                    <FormLabel component="legend">Show: </FormLabel>
-                    <FormGroup aria-label="position" row>
+                    <FormGroup aria-label="position" >
+                    <FormLabel component="legend" className='cal-gram-selector-label'>Show: </FormLabel>
                         <FormControlLabel
                             checked={showCalories}
-                            control={<Switch onChange={(e) => handleSwitchChange(e)} color="primary" />}
-                            label={showCalories ? "Calorias" : "Gramos"}
-                            labelPlacement="bottom"
+                            control={<WhiteSwitch onChange={(e) => handleSwitchChange(e)} {...label} defaultChecked />}
+                            label={showCalories ? "Calories" : "Grams"}
+                            labelPlacement="end"
                         />
+                        
                     </FormGroup>
                 </FormControl>
                 {
@@ -65,7 +81,7 @@ export const BudgetSummary = () => {
                         : null
 
                 }
-                <Button><AddIcon /></Button>
+                <Button sx={{ color: 'white'}}><AddIcon />Save budget</Button>
             </Box>
         </>
     )

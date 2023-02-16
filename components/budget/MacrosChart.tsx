@@ -49,7 +49,7 @@ import {
         {
           label: "# of grams",
           data: [ foodData.fat, foodData.carbs, foodData.protein],
-          backgroundColor: "rgba(255, 99, 132, 0.2)",
+          backgroundColor: "rgba(197, 81, 59, 0.2)",
         }
       ]
     };

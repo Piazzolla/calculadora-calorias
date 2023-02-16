@@ -90,7 +90,7 @@ Medium:
 
 .summary-container {
     margin-top: 1.6em;
-    background-color: #c5513b;
+    background-color: rgb(197, 81, 59);
     padding: 2rem;
     color: white;
     border-radius: 9px;
@@ -107,9 +107,26 @@ Medium:
 }
 
 .cal-gram-selector {
-    background-color: green;
+    /* background-color: green; */
     margin-bottom: 2rem;
 }
+
+.cal-gram-selector div {
+
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    /* display: flex;
+    flex-direction: row;
+    row-gap: 3em; */
+}
+.cal-gram-selector-label {
+    display: inline-block;
+    font-size: 2rem;
+    color: white !important; 
+    transform: translateY(10%);
+    justify-self: center;
+}
+
 
 .summary-data-view {
     display: flex;
