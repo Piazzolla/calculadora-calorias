@@ -25,7 +25,7 @@ import {
         position: 'top' as const,
       },
       title: {
-        display: true,
+        display: false,
         text: 'Chart.js Bar Chart',
       },
     },
@@ -38,16 +38,17 @@ import {
       fat: number;
       carbs: number;
       protein: number
-    }
+    },
+    showCalories: boolean;
   }
 
-  const MacrosChart:React.FunctionComponent<ChartProps> = ( {foodData} ) => {
+  const MacrosChart:React.FunctionComponent<ChartProps> = ( {foodData, showCalories} ) => {
     console.log(foodData.fat, foodData.carbs, foodData.protein)
     const data = {
       labels,
       datasets: [
         {
-          label: "# of grams",
+          label: showCalories? "% of Calories": "# of grams",
           data: [ foodData.fat, foodData.carbs, foodData.protein],
           backgroundColor: "rgba(197, 81, 59, 0.2)",
         }

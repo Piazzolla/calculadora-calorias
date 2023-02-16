@@ -13,6 +13,7 @@ import MacrosChart from './MacrosChart';
 import { alpha, styled } from '@mui/material/styles';
 import { grey } from '@mui/material/colors';
 import { WhiteSwitch } from './WhiteSwitch';
+import { round } from '../../helpers/round';
 
 // const WhiteSwitch = styled(Switch)(({ theme }) => ({
 //     '& .MuiSwitch-switchBase.Mui-checked': {
@@ -76,7 +77,11 @@ export const BudgetSummary = () => {
                                     <Typography sx={{ fontSize:'1.6rem', marginBottom:'1rem'}}> {totalCalories}</Typography>
                                 </li>
                             </ul>
-                            <MacrosChart  foodData={{ fat:totalGrOfFats, carbs:totalGrOfCarbs, protein:totalGrOfProtein}}/>
+                            <MacrosChart showCalories={showCalories} foodData={{ 
+                                
+                                fat:showCalories? round((totalGrOfFats*9)*100/totalCalories):totalGrOfFats, 
+                                carbs:showCalories? round((totalGrOfCarbs*4)*100/totalCalories):totalGrOfCarbs, 
+                                protein:showCalories? round((totalGrOfProtein*4)*100/totalCalories):totalGrOfProtein}}/>
                         </div>)
                         : null
 
