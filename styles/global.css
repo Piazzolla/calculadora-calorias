@@ -114,7 +114,8 @@ Medium:
 .cal-gram-selector div {
 
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    max-width: fit-content;
+    grid-template-columns: 1fr 1fr;
     /* display: flex;
     flex-direction: row;
     row-gap: 3em; */
