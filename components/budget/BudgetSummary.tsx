@@ -48,7 +48,7 @@ export const BudgetSummary = () => {
                     <FormLabel component="legend" className='cal-gram-selector-label'>Show: </FormLabel>
                         <FormControlLabel
                             checked={showCalories}
-                            control={<WhiteSwitch onChange={(e) => handleSwitchChange(e)} {...label} defaultChecked />}
+                            control={<WhiteSwitch onChange={(e) => handleSwitchChange(e)} {...label} />}
                             label={showCalories ? "Calories" : "Grams"}
                             labelPlacement="end"
                         />
