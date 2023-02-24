@@ -11,6 +11,7 @@ interface ContextProps {
     totalCalories: number;
 
     addIngredientToBudget: (ing: SelectedIngredient) => void;
+    saveBudgetToDB: () => void;
 }
 
 export const BudgetContext = createContext({} as ContextProps);

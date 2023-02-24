@@ -2,6 +2,9 @@ import { FC, useReducer } from 'react';
 import { BudgetContext, budgetReducer } from '.';
 import { Ingredient } from '../../interfaces/Ingredient';
 import { SelectedIngredient } from '../../interfaces/SelectedIngredient';
+import axios from 'axios';
+import calsCalcApi from '../../lib/axiosInstance';
+import { Budget } from 'interfaces/Budget';
 
 export interface BudgetState {
    budget: SelectedIngredient[];
@@ -53,12 +56,53 @@ export const BudgetProvider:FC<Props> = ({ children }) => {
       dispatch({type: '[Budget] - addIngredient', payload: {selectedIngredient, carbs, fats, prots, cals}});
    }
 
+   const saveBudgetToDB = async ():Promise<{ hasError: boolean; message: string; }> => {
+    //  console.log('saveBudgetToDB');
+    if(!state.budget.length) { return {
+      hasError: true,
+      message: 'add ingredients first'
+   } /* TODO: handle error*/}
+
+      try {
+
+         const body: Budget = {
+            ingredients: state.budget,
+            days: 7,
+            dateStart: new Date().toISOString()
+         }
+
+         console.log(JSON.stringify(body));
+
+         const {data} = await calsCalcApi.post<Budget>('/budget', body)
+
+         //TODO: reducer part of this, update state
+
+         return {
+            hasError: false,
+            message: 'success'
+         }
+      } catch (error) {
+         if( axios.isAxiosError(error)){
+            return {
+               hasError: true,
+               message: error.response?.data.message
+            }
+         }  
+      }
+
+      return {
+         hasError: true,
+         message: 'Unhandlerd error - contact the administrator'
+      }
+   }
+
 
 
    return (
        <BudgetContext.Provider value={{
            ...state,
-           addIngredientToBudget
+           addIngredientToBudget,
+           saveBudgetToDB
        }}>
            { children }
        </BudgetContext.Provider>

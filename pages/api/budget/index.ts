@@ -6,6 +6,7 @@ type Data = | { message: string }
             | Budget;
 
 export default function handler(req: NextApiRequest, res: NextApiResponse<Data>) {
+    console.log('BUDGET API HANDLER');
     switch (req.method) {
         case 'POST':
             return createBudget(req, res);

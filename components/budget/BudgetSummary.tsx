@@ -30,7 +30,7 @@ import { round } from '../../helpers/round';
 
 export const BudgetSummary = () => {
 
-    const { budget, totalGrOfCarbs, totalGrOfFats, totalGrOfProtein, totalCalories } = useContext(BudgetContext);
+    const { budget, totalGrOfCarbs, totalGrOfFats, totalGrOfProtein, totalCalories, saveBudgetToDB } = useContext(BudgetContext);
 
     const [showCalories, setShowCalories] = useState(false);
 
@@ -38,6 +38,11 @@ export const BudgetSummary = () => {
     const handleSwitchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setShowCalories(event.currentTarget.checked);
     };
+
+    const handleOnSaveBudget = async () => {
+        const result = await saveBudgetToDB();
+        console.log(result);
+    }
 
     return (
         <>
@@ -86,7 +91,7 @@ export const BudgetSummary = () => {
                         : null
 
                 }
-                <Button sx={{ color: 'white'}}><AddIcon />Save budget</Button>
+                <Button onClick={handleOnSaveBudget} sx={{ color: 'white'}}><AddIcon />Save budget</Button>
             </Box>
         </>
     )
