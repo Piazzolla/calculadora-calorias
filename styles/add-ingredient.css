@@ -19,7 +19,7 @@
 }
 
 .add-ingredient-form-field {
-    background-color: #fceacc;
+    background-color: #fef5e8;
     padding: .8rem, 0;
     margin-bottom: 1.6rem;
 }
@@ -68,7 +68,7 @@ h3 {
 .added-ingredient-list-box ul {
     list-style: none;
     font-size: 1.6em;
-    background-color: #fceacc;
+    background-color: #fef5e8;
     padding: .8rem, 0;
     padding: 1.2em 2em;
     border-bottom-right-radius: 9px;

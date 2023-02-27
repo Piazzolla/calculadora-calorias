@@ -91,7 +91,8 @@ export const BudgetSummary = () => {
                         : null
 
                 }
-                <Button onClick={handleOnSaveBudget} sx={{ color: 'white'}}><AddIcon />Save budget</Button>
+                <Button onClick={handleOnSaveBudget} className='save-budget-button'>
+                    <AddIcon className='save-budget-button-icon' />Save budget</Button>
             </Box>
         </>
     )

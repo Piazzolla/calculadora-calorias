@@ -43,7 +43,8 @@ EJEMPLO: 0 2.4rem 4.8rem rgba(0, 0, 0, 0.075);
 
 --- 06 BORDER-RADIUS
 
-Default: 
+Default: 4px
+Big: 9px
 Medium: 
 
 --- 07 WHITESPACE
@@ -123,7 +124,7 @@ Medium:
 .cal-gram-selector-label {
     display: inline-block;
     font-size: 2rem;
-    color: white !important; 
+    color: #fef5e8 !important; 
     transform: translateY(10%);
     justify-self: center;
 }
@@ -150,6 +151,27 @@ Medium:
 }
 
 .macros-chart {
-    background-color: white;
+    background-color: #fef5e8;
+    margin-bottom: 2em;
+    border-radius: 4px;
 }
 
+.save-budget-button {
+    color: #db5a42;
+    background-color: #fef5e8;
+    font-size: 1.6em;
+    display: flex;
+    align-items: center;
+    max-width: fit-content;
+    padding: 0.4em;
+    align-self: end;
+}
+
+.save-budget-button:hover {
+    background-color: #f0e7da;
+
+}
+
+.save-budget-button-icon {
+    font-size: 1.8em;
+}
