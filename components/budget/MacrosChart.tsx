@@ -8,6 +8,8 @@ import {
     Legend
   } from "chart.js";
   import { Bar } from "react-chartjs-2";
+
+  import styles from '../../styles/MacrosChart.module.css'
   
   ChartJS.register(
     CategoryScale,
@@ -56,7 +58,7 @@ import {
     };
 
 
-    return <Bar className="macros-chart" options={options} data={data} />;
+    return <Bar className={styles["macros-chart"]} options={options} data={data} />;
   }
 
   export default MacrosChart;
