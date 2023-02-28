@@ -8,6 +8,7 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import { BudgetContext } from '../../context/budget/BudgetContext';
 import { SelectedIngredient } from '../../interfaces/SelectedIngredient';
 import styles from "../../styles/AddIngredients.module.css";
+import { round } from 'helpers/round';
 
 type FormIngredient = {
     qty: number,
@@ -93,7 +94,7 @@ export const AddIngredients = () => {
                     {
                         budget ?
                             (budget.map(selectedIngredient => {
-                                return <li className={styles['added-ingredient-list-item']} key={selectedIngredient.ingredient.name}>{selectedIngredient.ingredient.name}: {selectedIngredient.qty} {selectedIngredient.unit}</li>
+                                return <li className={styles['added-ingredient-list-item']} key={selectedIngredient.ingredient.name}>{selectedIngredient.ingredient.name}: {round(selectedIngredient.qty)} {selectedIngredient.unit}</li>
                             }))
                             : null
                     }

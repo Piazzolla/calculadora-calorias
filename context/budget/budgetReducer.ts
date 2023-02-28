@@ -1,5 +1,6 @@
 import { SelectedIngredient } from 'interfaces/SelectedIngredient';
 import { BudgetState } from '.';
+import { round } from 'helpers/round';
 
 type BudgetActionType =
    | { type: '[Budget] - addIngredient', payload: {selectedIngredient:SelectedIngredient, carbs: number, fats: number, prots: number, cals: number} }
@@ -17,10 +18,10 @@ export const budgetReducer = (state: BudgetState, action: BudgetActionType): Bud
          return {
             ...state,
             budget: [...state.budget, action.payload.selectedIngredient],
-            totalGrOfCarbs:Math.round( action.payload.carbs * 100) / 100,
-            totalGrOfFats: Math.round( action.payload.fats * 100) / 100,
-            totalGrOfProtein: Math.round( action.payload.prots * 100) / 100,
-            totalCalories: Math.round( action.payload.cals * 100) / 100
+            totalGrOfCarbs: round(action.payload.carbs),
+            totalGrOfFats: round(action.payload.fats),
+            totalGrOfProtein: round(action.payload.prots),
+            totalCalories: round(action.payload.cals) 
          }
       case '[Budget] - increaseIngredient':
          const existingIngredient = state.budget.filter( i => i.ingredient.name === action.payload.selectedIngredient.ingredient.name);
@@ -36,10 +37,10 @@ export const budgetReducer = (state: BudgetState, action: BudgetActionType): Bud
          return {
             ...state,
             budget: [...state.budget.filter( i => i.ingredient.name !== selectedIngredientParam.ingredient.name), addedValuesIngredient],
-            totalGrOfCarbs: Math.round((action.payload.carbs) * 100) / 100,
-            totalGrOfFats: Math.round((action.payload.fats) * 100) / 100,
-            totalGrOfProtein: Math.round((action.payload.prots) * 100) / 100,
-            totalCalories: Math.round((action.payload.cals) * 100) / 100
+            totalGrOfCarbs: round(action.payload.carbs),
+            totalGrOfFats: round(action.payload.fats),
+            totalGrOfProtein: round(action.payload.prots),
+            totalCalories: round(action.payload.cals) 
          }
       default:
          return state;
