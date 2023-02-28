@@ -64,19 +64,19 @@ export const BudgetSummary = () => {
                             <ul className={styles['summary-list']}>
 
                                 <li className={styles['summary-list-item']}>
-                                    <Typography sx={{ fontSize:'1.6rem', textTransform: 'uppercase' }}>Total Carbs:</Typography>
+                                    <Typography sx={{ fontSize:'1.2rem', textTransform: 'uppercase' }}>Total Carbs:</Typography>
                                     <Typography sx={{ fontSize:'1.6rem', marginBottom:'1rem'}}> {totalGrOfCarbs * (showCalories ? 4 : 1)} {showCalories ? "Cals" : "Grams"}</Typography>
                                 </li>
                                 <li className={styles['summary-list-item']}>
-                                    <Typography sx={{ fontSize:'1.6rem', textTransform: 'uppercase' }}>Total Fat:</Typography>
+                                    <Typography sx={{ fontSize:'1.2rem', textTransform: 'uppercase' }}>Total Fat:</Typography>
                                     <Typography sx={{ fontSize:'1.6rem', marginBottom:'1rem'}}> {totalGrOfFats * (showCalories ? 9 : 1)} {showCalories ? "Cals" : "Grams"}</Typography>
                                 </li>
                                 <li className={styles['summary-list-item']}>
-                                    <Typography sx={{ fontSize:'1.6rem', textTransform: 'uppercase' }}>Total Protein:</Typography>
+                                    <Typography sx={{ fontSize:'1.2rem', textTransform: 'uppercase' }}>Total Protein:</Typography>
                                     <Typography sx={{ fontSize:'1.6rem', marginBottom:'1rem'}}> {totalGrOfProtein * (showCalories ? 4 : 1)} {showCalories ? "Cals" : "Grams"}</Typography>
                                 </li>
                                 <li className={styles['summary-list-item']}>
-                                    <Typography sx={{ fontSize:'1.6rem', textTransform: 'uppercase' }}>Total Calories:</Typography>
+                                    <Typography sx={{ fontSize:'1.2rem', textTransform: 'uppercase' }}>Total Calories:</Typography>
                                     <Typography sx={{ fontSize:'1.6rem', marginBottom:'1rem'}}> {totalCalories}</Typography>
                                 </li>
                             </ul>
