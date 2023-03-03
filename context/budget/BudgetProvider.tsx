@@ -47,6 +47,7 @@ export const BudgetProvider: FC<Props> = ({ children }) => {
       }
 
       //TODO: take into account units
+      //TODO: rename selectedIngredient from the map to something else so this reads less confusingly
       return state.budget.map(selectedIngredient => (selectedIngredient.ingredient[attribute.name] / selectedIngredient.ingredient.baseQuantity.quantity) * selectedIngredient.qty).reduce((a: number, b: number) => { return a + b }) + (selectedIngredient.ingredient[attribute.name] / selectedIngredient.ingredient.baseQuantity.quantity) * selectedIngredient.qty
    }
 
