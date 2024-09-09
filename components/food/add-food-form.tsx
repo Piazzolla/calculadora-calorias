@@ -4,20 +4,26 @@ import TextField from "@mui/material/TextField"
 import Button from "@mui/material/Button";
 import CheckIcon from '@mui/icons-material/Check';
 import initialData from '../../data/initial-data';
-import { useForm, SubmitHandler } from "react-hook-form";
-import { BudgetContext } from '../../context/budget/BudgetContext';
-import { SelectedIngredient } from '../../interfaces/SelectedIngredient';
+import { useForm } from "react-hook-form";
+import { BudgetContext } from '../../context/budget/budget-context';
+import { SelectedIngredient } from '../../interfaces/selected-ingredients';
 import styles from "../../styles/AddIngredients.module.css";
 import { round } from 'helpers/round';
 
+
+
 type FormIngredient = {
-    qty: number,
-    unit: string,
-    ingredientName: string
+    ingredientName: string;
+    qty: number;
+    unit: string;
+    calories: number;
+    fat: number;
+    carbs: number;
+    protein: number;
 };
 
 
-export const AddIngredients = () => {
+export const AddFoodForm = () => {
 
     const { register, handleSubmit, watch, formState: { errors } } = useForm<FormIngredient>();
 

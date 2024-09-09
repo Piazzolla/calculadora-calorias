@@ -1,5 +1,5 @@
 import { createContext } from 'react';
-import { SelectedIngredient } from '../../interfaces/SelectedIngredient';
+import { SelectedIngredient } from '../../interfaces/selected-ingredients';
 
 
 

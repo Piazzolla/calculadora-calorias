@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from 'react';
-import { BudgetContext } from '../../context/budget/BudgetContext';
+import { BudgetContext } from '../../context/budget/budget-context';
 import Button from '@mui/material/Button';
 import AddIcon from '@mui/icons-material/Add';
 import FormControl from '@mui/material/FormControl';
@@ -8,8 +8,8 @@ import FormLabel from '@mui/material/FormLabel';
 import FormGroup from '@mui/material/FormGroup';
 import { Box } from '@mui/material';
 import Typography from '@mui/material/Typography';
-import MacrosChart from './MacrosChart';
-import { WhiteSwitch } from './WhiteSwitch';
+import MacrosChart from './macros-chart';
+import { WhiteSwitch } from './white-switch';
 import { round } from '../../helpers/round';
 import styles from '../../styles/BudgetSummary.module.css';
 

@@ -1,4 +1,4 @@
-import { Ingredient } from "./Ingredient";
+import { Ingredient } from "./ingredient";
 
 export interface SelectedIngredient {
     ingredient:Ingredient, 

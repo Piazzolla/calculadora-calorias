@@ -1,4 +1,4 @@
-import { Budget } from 'interfaces/Budget';
+import { Budget } from 'interfaces/budget';
 import type { NextApiRequest, NextApiResponse } from 'next'
 import clientPromise from '../../../lib/mongodb';
 

@@ -1,4 +1,4 @@
-import { SelectedIngredient } from 'interfaces/SelectedIngredient';
+import { SelectedIngredient } from 'interfaces/selected-ingredients';
 import { BudgetState } from '.';
 import { round } from 'helpers/round';
 

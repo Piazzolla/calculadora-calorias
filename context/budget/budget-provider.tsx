@@ -1,10 +1,10 @@
 import { FC, useReducer } from 'react';
 import { BudgetContext, budgetReducer } from '.';
-import { Ingredient } from '../../interfaces/Ingredient';
-import { SelectedIngredient } from '../../interfaces/SelectedIngredient';
+import { Ingredient } from '../../interfaces/ingredient';
+import { SelectedIngredient } from '../../interfaces/selected-ingredients';
 import axios from 'axios';
 import calsCalcApi from '../../lib/axiosInstance';
-import { Budget } from 'interfaces/Budget';
+import { Budget } from 'interfaces/budget';
 
 export interface BudgetState {
    budget: SelectedIngredient[];

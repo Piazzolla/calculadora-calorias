@@ -1,4 +1,4 @@
-import { Ingredient } from '../interfaces/Ingredient';
+import { Ingredient } from '../interfaces/ingredient';
 
 const initialData: Ingredient[] =
 [
