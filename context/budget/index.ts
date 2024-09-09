@@ -1,5 +1,5 @@
 
 
 export * from './budget-context';
-export * from './BudgetProvider';
-export * from './budgetReducer';
+export * from './budget-provider';
+export * from './budget-reducer';
